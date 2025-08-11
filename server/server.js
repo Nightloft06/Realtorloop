@@ -36,7 +36,7 @@ app.get('/api/health', (_req, res) => res.json({ ok: true }));
 app.use('/api/email', emailRoutes);
 
 // Unknown API
-app.use('/api/*', (_req, res) => res.status(404).json({ error: 'Not found' }));
+app.use('/api/:splat(*)', (_req, res) => res.status(404).json({ error: 'Not found' }));
 
 // Central error handler (shows CORS or mail errors clearly)
 app.use((err, _req, res, _next) => {
